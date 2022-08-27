@@ -8,6 +8,7 @@
         <div class="card" aria-hidden="true">
             <div class="card-body">
                 <div class="row">
+                    <div class="col-10"><a class="btn btn-primary" href="/categorias/new">Nueva categoria </a></div>
                     <div class="col-10" style="margin-top:2%">
                     <%= form_with(model:@ingreso ,url: ingresos_path) do |form| %>
                         <% @ingreso.errors.full_messages.each do |error| %>

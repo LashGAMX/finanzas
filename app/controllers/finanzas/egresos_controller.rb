@@ -1,11 +1,18 @@
 class Finanzas::EgresosController < ApplicationController
     def index
         @ingreso = Ingreso.where(tipo:2)
+        @fecha1 = Date.today
+        @fecha2 = Date.today
+        if params[:inicio].present? && params[:fin].present?
+            @ingreso = Ingreso.where(tipo:2,fecha: (params[:inicio] .. params[:fin]))
+            @fecha1 = params[:inicio]
+            @fecha2 = params[:fin]
+        end
     end
     def new
         @ingreso = Ingreso.new
         @categoria = Categorium.where(tipo:2)
-        pp @categoria
+       
     end
     def create
         @ingreso = Ingreso.new (get_params)
@@ -26,6 +33,12 @@ class Finanzas::EgresosController < ApplicationController
         else
             render :edit, status: :unprocessable_entity
         end
+    end
+    def destroy
+        @ingreso = Ingreso.find_by(id:[params[:id]])
+        @ingreso.destroy
+
+        redirect_to '/egresos' 
     end
     private
     def get_params

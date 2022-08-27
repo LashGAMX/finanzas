@@ -3,7 +3,7 @@ class CreateCategoria < ActiveRecord::Migration[7.0]
     create_table :categoria do |t|
       t.string :categoria
       t.integer :tipo
-
+      t.string :icono
       t.timestamps
     end
   end

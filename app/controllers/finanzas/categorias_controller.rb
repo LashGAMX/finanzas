@@ -31,6 +31,6 @@ class Finanzas::CategoriasController < ApplicationController
     end
     private
     def categoria_params
-        params.require(:categorium).permit(:categoria, :tipo)
+        params.require(:categorium).permit(:categoria, :tipo ,:icono)
     end
 end

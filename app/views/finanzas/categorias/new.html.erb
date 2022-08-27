@@ -8,9 +8,6 @@
         <div class="card" aria-hidden="true">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-12 ">
-                        <a href="/categorias/new" class="btn btn-success"><i class="far fa-plus-square"></i>&nbsp;Crear</a>
-                    </div>
                     <div class="col-12" style="margin-top:2%">
                     <%= form_with(model:@categoria ,url: categorias_path) do |form| %>
                         <% @categoria.errors.full_messages.each do |error| %>
@@ -22,6 +19,10 @@
                         <div class="mb-3">
                             <%= form.label :tipo , :class => 'form-label' %>
                             <%= form.select :tipo, [["Ingreso", "1"], ["Egreso", "2"]] , :class => 'form-control' %>
+                        </div>
+                        <div class="mb-3">
+                            <%= form.label :icono , :class => 'form-label' %>
+                            <%= form.select :icono, [["Comida", "utensils"], ["Medico", "hospital-user"],["Sueldo","coins"]] , :class => 'form-control' %>
                         </div>
                         <div class="mb-3">
                         <%= form.submit "Crear categoria", :class => "btn btn-success" %>
