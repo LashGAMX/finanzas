@@ -4,15 +4,18 @@ Rails.application.routes.draw do
   get '/home' , to: 'home#home'
 
   namespace :authentication, path: '' , as: '' do
-    resource :users, only: [:new,:create]
-    resource :sessions, only: [:new,:create]
+    resources :users, only: [:new,:create]
+    resources :sessions, only: [:new,:create]
     get '/sessions/destroy' , to: 'sessions#destroy'
   end
 
   namespace :finanzas, path: '' , as: '' do
-    resource :categorias, only: [:index,:new,:create,:update,:edit]
+    resources :categorias, only: [:index,:new,:create,:update,:edit]
+    resources :ingresos, only: [:index,:new,:create,:update,:edit]
+    resources :egresos, only: [:index,:new,:create,:update,:edit]
 
     get '/categorias' , to: 'categorias#index'
+    # get '/categorias/:id' , to: 'categorias#update' as: :update_categorias
   end
 
 end

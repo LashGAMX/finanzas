@@ -2,14 +2,14 @@
     <div class="container" style="margin-left:18%">
         <div class="card" aria-hidden="true">
             <div class="card-body">
-                <h4>Categorias</h4>
+                <h4>Egreso</h4>
             </div>
         </div>
         <div class="card" aria-hidden="true">
             <div class="card-body">
                 <div class="row">
                     <div class="col-12 ">
-                        <a href="/categorias/new" class="btn btn-success"><i class="far fa-plus-square"></i>&nbsp;Crear</a>
+                        <a href="/egresos/new" class="btn btn-success"><i class="far fa-plus-square"></i>&nbsp; Registrar</a>
                     </div>
                     <div class="col-12" style="margin-top:2%">
                         <table class="table table-sm" id="tableCategoria">
@@ -17,24 +17,22 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Categoria</th>
-                                    <th>Tipo</th>
+                                    <th>Fecha</th>
+                                    <th>Monto</th>
+                                    <th>Comentario</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <% @categoria.each do |item|  %>
+                                <% @ingreso.each do |item|  %>
                                     <tr>
                                         <td><%= item.id %></td>
-                                        <td><%= item.categoria %></td>
+                                        <td><%= item.id_categoria %></td>
+                                        <td><%= item.fecha %></td>
+                                        <td>$ <%= item.monto %></td>
+                                        <td><%= item.comentario %></td>
                                         <td>
-                                            <% if item.tipo == 1%> 
-                                            Ingreso
-                                            <% else %>
-                                            Egreso
-                                            <% end %>
-                                        </td>
-                                        <td>
-                                        <%= link_to edit_categoria_path(item.id) do %><i class="fas fa-edit"></i>  Editar <% end %> &nbsp;                                            
+                                        <%= link_to edit_egreso_path(item.id) do %><i class="fas fa-edit"></i>  Editar <% end %> &nbsp;                                            
                                         </td>
                                     </tr>
                                 <% end %>

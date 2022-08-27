@@ -14,14 +14,23 @@ class Finanzas::CategoriasController < ApplicationController
         else
             render :new ,status: :unprocessable_entity
         end
-        pp params[:categorium]
     end
     def edit
-        @categoria = Categorium.find([params[:format]])
-        pp params[:format]
+        @categoria = Categorium.find([params[:id]])
+        pp params
+    end
+    def update
+        pp "Datos update:"
+        @categoria = Categorium.find_by(id:[params[:id]])
+        if @categoria.update(categoria_params)
+            redirect_to '/categorias'
+        else
+            render :edit, status: :unprocessable_entity
+        end
+        
     end
     private
     def categoria_params
-        params.require(:categorium).permit(:categoria,:tipo)
+        params.require(:categorium).permit(:categoria, :tipo)
     end
 end

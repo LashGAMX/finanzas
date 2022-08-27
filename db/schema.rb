@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_26_210628) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_27_051113) do
   create_table "categoria", force: :cascade do |t|
     t.string "categoria"
+    t.integer "tipo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ingresos", force: :cascade do |t|
+    t.integer "id_categoria"
+    t.date "fecha"
+    t.float "monto"
+    t.string "comentario"
     t.integer "tipo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
